@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manipulating HTML Elements</title>
+</head>
+<body>
+    <h2>Manipulating HTML Elements</h2>
+
+    <div id="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+
+    <button onclick="addItem()">Add Item</button>
+    <button onclick="removeItem()">Remove Item</button>
+    <button onclick="modifyItems()">Modify Items</button>
+
+    <script>
+        // Add item function
+        function addItem() {
+            var container = document.getElementById("container");
+            var newItem = document.createElement("div");
+            newItem.textContent = "New Item";
+            newItem.className = "item";
+            container.appendChild(newItem);
+        }
+
+        // Remove item function
+        function removeItem() {
+            var container = document.getElementById("container");
+            var items = container.getElementsByClassName("item");
+            if (items.length > 0) {
+                container.removeChild(items[items.length - 1]);
+            }
+        }
+
+        // Modify items function
+        function modifyItems() {
+            var items = document.getElementsByClassName("item");
+            for (var i = 0; i < items.length; i++) {
+                items[i].style.backgroundColor = "yellow";
+                items[i].style.padding = "10px";
+            }
+        }
+    </script>
+</body>
+</html>

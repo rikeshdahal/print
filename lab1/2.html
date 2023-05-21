@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var firstNumber = parseFloat(prompt("Enter the first number:"));
+      var secondNumber = parseFloat(prompt("Enter the second number:"));
+      var operator = prompt("Enter the operator (+, -, *, /):");
+
+      var result;
+
+      if (operator === "+") {
+        result = firstNumber + secondNumber;
+      } else if (operator === "-") {
+        result = firstNumber - secondNumber;
+      } else if (operator === "*") {
+        result = firstNumber * secondNumber;
+      } else if (operator === "/") {
+        result = firstNumber / secondNumber;
+      } else {
+        result = "Invalid operator";
+      }
+
+      alert("Result: " + result);
+    </script>
+  </body>
+</html>

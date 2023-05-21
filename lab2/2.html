@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function validateForm() {
+            var name = document.forms["myForm"]["name"].value;
+            var email = document.forms["myForm"]["email"].value;
+            var phone = document.forms["myForm"]["phone"].value;
+            var address = document.forms["myForm"]["address"].value;
+            var gender = document.forms["myForm"]["gender"].value;
+            var country = document.forms["myForm"]["country"].value;
+            var terms = document.forms["myForm"]["terms"].checked;
+
+            if (name == "") {
+                alert("Name is required.");
+                return false;
+            }
+
+            if (email == "") {
+                alert("Email is required.");
+                return false;
+            } else if (!validateEmail(email)) {
+                alert("Invalid email format.");
+                return false;
+            }
+
+            if (phone == "") {
+                alert("Phone is required.");
+                return false;
+            } else if (!/^\d{10}$/.test(phone)) {
+                alert("Invalid phone number. It should be 10 digits.");
+                return false;
+            }
+
+            if (address == "") {
+                alert("Address is required.");
+                return false;
+            }
+
+            if (gender == "") {
+                alert("Gender is required.");
+                return false;
+            }
+
+            if (country == "") {
+                alert("Country is required.");
+                return false;
+            }
+
+            if (!terms) {
+                alert("Please accept the Terms & Conditions.");
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+    </script>
+</head>
+<body>
+    <h2>Form Validation</h2>
+    <form name="myForm" onsubmit="return validateForm()" method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="gender">Gender:</label><br>
+        <input type="radio" id="gender-male" name="gender" value="male" required>
+        <label for="gender-male">Male</label>
+        <input type="radio" id="gender-female" name="gender" value="female">
+        <label for="gender-female">Female</label><br><br>
+
+        <label for="country">Country:</label><br>
+        <select id="country" name="country" required>
+            <option value="">-- Select Country --</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="Nepal">Nepal</option>
+            <option value="India">India</option>
+        </select><br><br>
+
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I accept the Terms & Conditions</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
